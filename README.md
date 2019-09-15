@@ -1,24 +1,9 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Ruby 2.7.0-preview1
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Сущности проекта TestGuru:
+  - Пользователь (в тч Администратор тестов как частный случай)
+  - Тест 
+  - Попытка прохождения (в тч выбранные варианты ответов в конкретном прохождении)
+  - Результат (нужно ли выделять в отдельную сущность? или вычислять динамически сличая тест и попытку прохождения - тогда нужно хранить все версии тестов за все время)
