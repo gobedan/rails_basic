@@ -1,7 +1,7 @@
 class Test < ApplicationRecord
-  belongs_to :category
-  belongs_to :author, class_name: 'User'
-  has_many :questions, dependent: :nullify
+  belongs_to :category, optional: true
+  belongs_to :author, class_name: 'User', optional: true
+  has_many :questions, dependent: :destroy
   has_many :user_tests, dependent: :destroy
   has_many :users, through: :user_tests
 
