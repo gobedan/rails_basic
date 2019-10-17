@@ -5,10 +5,23 @@ class Test < ApplicationRecord
   has_many :user_tests, dependent: :destroy
   has_many :users, through: :user_tests
 
-  def self.get_by_category(category)
-    Test.joins(:category)
-        .where(categories: {title: category})
-        .pluck(:title)  
+  scope :easy, -> { where(level: [0, 1]) }
+  scope :normal, -> { where(level: [2 ,3, 4]) }
+  scope :hard, -> { where("level >= ?", 5) }
+  scope :from_category, -> (category) do 
+    joins(:category)
+    .where(categories: {title: category})
+  end    
 
+  validates :title, presence: true 
+  validates :level, inclusion: { in: 0..Float::INFINITY }
+  validate :title_and_level_uniqueness 
+
+  private 
+
+  def title_and_level_uniqueness
+    unless Test.find_by ({title: title, level: level})
+      errors.add(:base, message: 'title and level must be unique!') 
+    end
   end
 end
