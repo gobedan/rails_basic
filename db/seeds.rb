@@ -23,5 +23,5 @@ answers = Answer.create!([{body: 'Requiem for a Dream', correct: true, question_
                 {body: 'Aluminium', correct: false, question_id: questions[4].id},
                 {body: 'Titanium', correct: true, question_id: questions[4].id},
                ])
-users = User.create!([{name: 'Gobedan', admin: true}, {name: 'Customer1', admin: false}])
+users = User.create!([{name: 'Gobedan', email: 'gobi@ya.ru', admin: true}, {name: 'Customer1', email: 'user@user.ru', admin: false}])
 user_tests = UserTest.create!([{user_id: users[1].id, test_id: tests[3].id}])

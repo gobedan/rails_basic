@@ -14,14 +14,7 @@ class Test < ApplicationRecord
   end    
 
   validates :title, presence: true 
-  validates :level, inclusion: { in: 0..Float::INFINITY }
-  validate :title_and_level_uniqueness 
-
-  private 
-
-  def title_and_level_uniqueness
-    unless Test.find_by ({title: title, level: level})
-      errors.add(:base, message: 'title and level must be unique!') 
-    end
-  end
+  validates :level, inclusion: { in: 0..Float::INFINITY }, 
+                    numericality: { only_integer: true }
+  validates_uniqueness_of :title, scope: :level 
 end
