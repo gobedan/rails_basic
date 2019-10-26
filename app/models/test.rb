@@ -8,7 +8,7 @@ class Test < ApplicationRecord
   scope :easy, -> { where(level: 0..1) }
   scope :normal, -> { where(level: 2..4) }
   scope :hard, -> { where("level >= ?", 5) }
-  scope :by_level, -> (level) { where("level = ?", level) }
+  scope :by_level, -> (level) { where(level: level) }
   scope :from_category, -> (category) do 
     joins(:category)
     .where(categories: {title: category})
