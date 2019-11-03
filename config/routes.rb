@@ -1,3 +1,8 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  #тут я пытаюсь отобразить вложенность и при этом не писать контроллер для тестов
+  get '/tests', to: redirect('/')
+
+  resources :tests, only: :index do
+    resources :questions, only: %i[index show create new destroy]
+  end
 end
