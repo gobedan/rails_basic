@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TestGuru</title>
+  </head>
+
+  <body>
+    <h2>Create new question</h2>
+    <h3>Associated test: <%= @test.title %>, level: <%= @test.level %> </h3>
+    <form action='/tests/<%= @test.id %>/questions' method="post">
+      <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+      <label for="new-question-body">Question: </label>
+      <input type="text" name="body" id="new-question-body">
+      <input type="submit" value="Create">
+    </form>
+  </body>
+</html>
