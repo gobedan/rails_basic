@@ -1,9 +1,8 @@
 class QuestionsController < ApplicationController
-  before_action :get_associated_test
   before_action :get_question, only: %i[show destroy]
+  before_action :get_test, only: %i[new create index]
 
-
-  rescue_from StandardError, with: :rescue_with_handler
+  rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_handler
   
   def index
     render plain: @test.questions.inspect
@@ -21,7 +20,8 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    @question = Question.create(params.permit(:test_id, :body))
+    @question = Question.create(question_params)
+    show
   end
 
   def destroy
@@ -29,15 +29,20 @@ class QuestionsController < ApplicationController
   end
 
   private 
+
+  def question_params
+    params.require(:question).permit(:body).merge!(params.permit(:test_id))
+  end
   
   def get_question
-    @question = @test.questions.find_by(params.permit(:id))
+    @question = Question.find(params[:id])
   end
 
-  def get_associated_test
-    @test = Test.find_by(id: params.permit(:test_id)[:test_id])
+  def get_test
+    @test = Test.find(params[:test_id])
   end
 
+  #Почему-то продолжает отлавливать все исключения
   def rescue_with_handler(ex)
     render plain: ex.message
     logger.info(ex.inspect)

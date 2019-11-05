@@ -3,6 +3,6 @@ Rails.application.routes.draw do
   get '/tests', to: redirect('/')
 
   resources :tests, only: :index do
-    resources :questions, only: %i[index show create new destroy]
+    resources :questions, only: %i[index show create new destroy], shallow: true
   end
 end
