@@ -20,7 +20,7 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    @question = Question.create(question_params)
+    @question = @test.questions.create(question_params)
     show
   end
 
@@ -31,7 +31,7 @@ class QuestionsController < ApplicationController
   private 
 
   def question_params
-    params.require(:question).permit(:body).merge!(params.permit(:test_id))
+    params.require(:question).permit(:body)
   end
   
   def get_question
