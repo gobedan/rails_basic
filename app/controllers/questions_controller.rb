@@ -2,8 +2,7 @@ class QuestionsController < ApplicationController
   before_action :get_question, only: %i[show destroy]
   before_action :get_test, only: %i[new create index]
 
-  rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_handler
-  
+  rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_record_rescuer
   def index
     render plain: @test.questions.inspect
   end
@@ -43,8 +42,9 @@ class QuestionsController < ApplicationController
   end
 
   #Почему-то продолжает отлавливать все исключения
-  def rescue_with_handler(ex)
+  def rescue_with_record_rescuer(ex)
     render plain: ex.message
     logger.info(ex.inspect)
+    logger.info('FROM rescue_with_handler')
   end
 end
