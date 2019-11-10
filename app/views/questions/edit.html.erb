@@ -1,5 +1,5 @@
-<body>
-  <h2>Update question</h2>
+
+  <h2><%= question_header %></h2>
   <h3>Body: <%= @question.body %> </h3>
   <h4>Associated test: <%= @test.title %>, level: <%= @test.level %> </h4>
   <!-- form_with не выношу в шаблон, тк из-за shallow: true нам необходимо использовать 
@@ -9,4 +9,3 @@
     <%= form.text_field :body %> 
     <%= form.submit %>
   <% end %>
-</body>

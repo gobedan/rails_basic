@@ -10,6 +10,13 @@
   </head>
 
   <body>
+    <div style="min-height: 400px">
     <%= yield %>
+    </div>
+    <footer style="color:grey; font-size:10px; text-align: center">
+      <p>Valentin Markin, <%= get_year %> </p>
+      <p>TestGuru. Учебный проект онлайн-школы <%= link_to 'Thinknetica', 'http://thinknetica.com' %> </p>
+      <p><%= link_to 'GitHub', github_url('gobedan', 'rails_basic') %></p>
+    </footer>
   </body>
 </html>
