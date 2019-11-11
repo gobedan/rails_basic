@@ -1,9 +1,1 @@
-  <h2><%= question_header %></h2>
-  <h4>Associated test: <%= @test.title %>, level: <%= @test.level %> </h4>
-  <!-- form_with не выношу в шаблон, тк из-за shallow: true нам необходимо использовать 
-  разные параметры свойства model: для edit и для new --> 
-  <%= form_with model: [@test, @question] do |form| %>
-    <%= form.label :body %>
-    <%= form.text_field :body %> 
-    <%= form.submit %>
-  <% end %>
+<%= render '/questions/redact' %>

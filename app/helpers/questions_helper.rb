@@ -1,8 +1,8 @@
 module QuestionsHelper
-  def question_header 
-    if params[:action] == "new"
+  def question_header(question)
+    if question.new_record?
       'Create new question'
-    elsif params[:action] == "edit"
+    else
       'Edit question'
     end
   end

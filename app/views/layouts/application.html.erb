@@ -15,8 +15,10 @@
     </div>
     <footer style="color:grey; font-size:10px; text-align: center">
       <p>Valentin Markin, <%= get_year %> </p>
-      <p>TestGuru. Учебный проект онлайн-школы <%= link_to 'Thinknetica', 'http://thinknetica.com' %> </p>
-      <p><%= link_to 'GitHub', github_url('gobedan', 'rails_basic') %></p>
+      <p>TestGuru. Учебный проект онлайн-школы <%= link_to 'Thinknetica', 'http://thinknetica.com', 
+                                                            target: "_blank" %> 
+      </p>
+      <p><%= link_to 'GitHub', github_url('gobedan', 'rails_basic'), target: "_blank" %></p>
     </footer>
   </body>
 </html>

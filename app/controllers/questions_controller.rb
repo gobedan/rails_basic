@@ -4,17 +4,13 @@ class QuestionsController < ApplicationController
 
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_record_rescuer
   def index
+    redirect_to test_path(@test)
   end
 
-  def show 
-
-    raise 'Question not found!' unless @question
-
-  end
+  def show; end
 
   def new
-    #app/views/questions/new.html.erb
-    @question = Question.new 
+    @question = @test.questions.new
   end
 
   def create
@@ -26,8 +22,7 @@ class QuestionsController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
   
   def update
     if @question.update(question_params)
@@ -39,7 +34,7 @@ class QuestionsController < ApplicationController
 
   def destroy
     @question.destroy
-    render :index
+    redirect_to test_path(@question.test)
   end
 
   private 
@@ -50,14 +45,12 @@ class QuestionsController < ApplicationController
   
   def get_question
     @question = Question.find(params[:id])
-    @test = @question.test
   end
 
   def get_test
     @test = Test.find(params[:test_id])
   end
 
-  #Почему-то продолжает отлавливать все исключения
   def rescue_with_record_rescuer(ex)
     render plain: ex.message
     logger.info(ex.inspect)
