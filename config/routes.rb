@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
-  #тут я пытаюсь отобразить вложенность и при этом не писать контроллер для тестов
-  get '/tests', to: redirect('/')
-
-  resources :tests, only: :index do
-    resources :questions, only: %i[index show create new destroy], shallow: true
+  root to: 'tests#index'
+  resources :tests do
+    resources :questions, except: :index, shallow: true
   end
 end

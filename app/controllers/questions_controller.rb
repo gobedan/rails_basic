@@ -1,30 +1,37 @@
 class QuestionsController < ApplicationController
-  before_action :get_question, only: %i[show destroy]
-  before_action :get_test, only: %i[new create index]
+  before_action :get_question, only: %i[show destroy edit update]
+  before_action :get_test, only: %i[new create]
 
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_record_rescuer
-  def index
-    render plain: @test.questions.inspect
-  end
-
-  def show 
-
-    raise 'Question not found!' unless @question
-
-    render plain: @question.inspect
-  end
+  
+  def show; end
 
   def new
-    #app/views/questions/new.html.erb
+    @question = @test.questions.new
   end
 
   def create
-    @question = @test.questions.create(question_params)
-    show
+    @question = @test.questions.new(question_params)
+    if @question.save 
+      redirect_to @question 
+    else 
+      render :new
+    end
+  end
+
+  def edit; end
+  
+  def update
+    if @question.update(question_params)
+      redirect_to @question
+    else
+      render :edit
+    end
   end
 
   def destroy
     @question.destroy
+    redirect_to test_path(@question.test)
   end
 
   private 
@@ -41,7 +48,6 @@ class QuestionsController < ApplicationController
     @test = Test.find(params[:test_id])
   end
 
-  #Почему-то продолжает отлавливать все исключения
   def rescue_with_record_rescuer(ex)
     render plain: ex.message
     logger.info(ex.inspect)

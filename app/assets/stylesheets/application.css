@@ -13,3 +13,12 @@
  *= require_tree .
  *= require_self
  */
+
+footer p {
+  color:grey; 
+  font-size:10px; 
+  text-align: center;
+}
+#main-body {
+  min-height: 400px;
+}
