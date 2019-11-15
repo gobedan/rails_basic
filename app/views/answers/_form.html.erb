@@ -1,0 +1,12 @@
+<%= form_with(model: [@question, @answer], local: true) do |form| %>
+  <p>
+    <%= form.label :body %><br>
+    <%= form.text_area :body, id: :answer_body, cols: 60, rows: 7 %>
+  </p>
+  <p>
+    <%= form.label :correct %><br>
+    <%= form.check_box :correct, id: :answer_correct %>
+  </p>
+    <%= form.submit %>
+  
+<% end %>
