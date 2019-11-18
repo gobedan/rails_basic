@@ -1,0 +1,8 @@
+<% result = @test_passage.correct_questions.to_f / @test_passage.test.questions.count %>
+  <% if result >= 0.85 %>
+    <h2 class="success"><%= @test_passage.test.title %> was completed!</h2>
+  <% else %> 
+    <h2 class="fail"><%= @test_passage.test.title %> is failed!</h2>
+  <% end %>
+<p>Result: <%= "#{(result * 100).to_i}%" %></p>
+<%= link_to 'Return to tests', tests_path %>
