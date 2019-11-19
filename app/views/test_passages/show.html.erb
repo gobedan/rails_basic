@@ -4,11 +4,10 @@
   <%= @test_passage.current_question.body %>
 </b>
 <p>
-  <% question_number = @test_passage.test.questions.ids.index(@test_passage.current_question_id) + 1 %>
-  Question <%= question_number %> of <%= @test_passage.test.questions.count %>
+  Question <%= @test_passage.current_question_number %> of <%= @test_passage.test.questions.count %>
 </p>
 <%= form_with url: test_passage_path(@test_passage), local: true, method: :put do |form| %>
-  <%= form.collection_check_boxes :answer_ids, @test_passage.current_question.answers, :id, :body, include_hidden: false do |b| %>
+  <%= form.collection_check_boxes :answer_ids, @test_passage.current_question.answers, :id, :body do |b| %>
     <%= b.check_box id: "answer_ids_#{b.object.id}" %>
     <%= b.label %>
   <% end %>
