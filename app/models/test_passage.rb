@@ -23,7 +23,7 @@ class TestPassage < ApplicationRecord
   end
 
   def successful?
-    result > 0.85 
+    result > SUCCESS_RATIO 
   end
 
   def result_percents
@@ -32,12 +32,14 @@ class TestPassage < ApplicationRecord
 
   private
 
+  SUCCESS_RATIO = 0.85
+
   def before_validation_set_current_question
     self.current_question = next_question if test.present? 
   end
 
   def correct_answer?(answer_ids)
-    correct_answers.ids.sort == answer_ids.reject(&:empty?).map(&:to_i).sort if answer_ids.present? 
+    correct_answers.ids.sort == Array(answer_ids).reject(&:empty?).map(&:to_i).sort
   end
 
   def correct_answers
@@ -45,7 +47,7 @@ class TestPassage < ApplicationRecord
   end
 
   def next_question
-    if current_question.nil? 
+    if new_record?
       prev_id = 0
     else
       prev_id = current_question.id
