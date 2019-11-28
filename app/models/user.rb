@@ -2,6 +2,8 @@ require 'digest/sha1'
 
 class User < ApplicationRecord
 
+  EMAIL_REGEX = /\A[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}\z/i
+
   has_many :authored_tests, class_name: 'Test', foreign_key: :author_id, dependent: :nullify
   has_many :test_passages, dependent: :destroy
   has_many :tests, through: :test_passages

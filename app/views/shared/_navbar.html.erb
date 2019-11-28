@@ -3,7 +3,7 @@
   <div class="nav">
     <% if logged_in? %>
       <p class="user">Welcome, <b><%= current_user.email %></b> Guru</p>
-      <%= link_to 'Logout', logout_path %>
+      <%= link_to 'Logout', logout_path, method: :delete %>
     <% else %>
       <%= link_to 'Sign Up', signup_path %>
       <span> | </span>

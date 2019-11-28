@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user, :logged_in?
   helper_method :flash_alert_unauthorized, :flash_alert_wrong_credentials
+  helper_method :flash_display
 
   before_action :authenticate_user!
 
@@ -24,7 +25,7 @@ class ApplicationController < ActionController::Base
   def logged_in?
     current_user.present?
   end
-
+  
   def flash_alert_unauthorized
     flash[:alert] = 'You are not Guru yet! Please login!'
   end
