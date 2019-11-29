@@ -1,14 +1,19 @@
-require 'digest/sha1'
-
 class User < ApplicationRecord
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, 
+         :registerable,
+         :recoverable, 
+         :rememberable, 
+         :validatable,
+         :confirmable,
+         :trackable
 
   EMAIL_REGEX = /\A[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}\z/i
 
   has_many :authored_tests, class_name: 'Test', foreign_key: :author_id, dependent: :nullify
   has_many :test_passages, dependent: :destroy
   has_many :tests, through: :test_passages
-
-  has_secure_password 
 
   validates :email, format: { with: EMAIL_REGEX, message: "incorrect format"}, on: :create
   validates :email, uniqueness: true
