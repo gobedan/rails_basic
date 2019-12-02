@@ -1,0 +1,9 @@
+<nav>
+  <%= link_to 'TestGuru', root_path, class: 'nav-title nav-admin' %>
+  <div class="nav nav-admin">
+    <% if user_signed_in? %>
+      <p class="user nav-admin">Welcome, <b><%= current_user.email %></b> Guru</p>
+      <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+    <% end %> 
+  </div>
+</nav>

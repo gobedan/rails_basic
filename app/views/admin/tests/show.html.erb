@@ -1,0 +1,4 @@
+  <h2> <%= @test.title %>, level: <%= @test.level %> </h2>
+  <%= link_to 'All tests', admin_tests_path %>
+  <%= link_to 'Add question', new_admin_test_question_path(@test) %> 
+  <%= render @test.questions %>

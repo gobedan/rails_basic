@@ -1,0 +1,4 @@
+<p><%= test.title %>, level: <%= test.level %>, questions: <%= test.questions.size %> </p>
+<%= link_to 'Open', admin_test_path(test) %>
+<%= link_to 'Edit', edit_admin_test_path(test) %>
+<%= link_to 'DELETE', admin_test_path(test), method: :delete, data: { confirm: 'Are you sure?' } %>
