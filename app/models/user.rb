@@ -1,6 +1,8 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  has_many :authored_tests, class_name: 'Test', foreign_key: :author_id, dependent: :nullify
+  has_many :test_passages, dependent: :destroy
+  has_many :tests, through: :test_passages
+  
   devise :database_authenticatable, 
          :registerable,
          :recoverable, 
@@ -8,15 +10,6 @@ class User < ApplicationRecord
          :validatable,
          :confirmable,
          :trackable
-
-  EMAIL_REGEX = /\A[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}\z/i
-
-  has_many :authored_tests, class_name: 'Test', foreign_key: :author_id, dependent: :nullify
-  has_many :test_passages, dependent: :destroy
-  has_many :tests, through: :test_passages
-
-  validates :email, format: { with: EMAIL_REGEX, message: "incorrect format"}, on: :create
-  validates :email, uniqueness: true
 
   def get_tests_by_level(level)
     tests.by_level(level)
@@ -26,5 +19,11 @@ class User < ApplicationRecord
     test_passages.order(id: :desc).find_by(test: test)
   end
 
+  def admin? 
+    self.is_a?(Admin)
+  end
 
+  def has_name?
+    self.first_name.present? 
+  end
 end
