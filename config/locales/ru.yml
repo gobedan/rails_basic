@@ -1,5 +1,7 @@
 ru:
   helpers:
+    select:
+      prompt: "Выберите"
     submit:
       test:
         create: 'Создать тест'
