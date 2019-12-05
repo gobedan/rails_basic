@@ -1,0 +1,9 @@
+en:
+  admin:
+    tests:
+      create:
+        success: 'Test created successfully'
+      update:
+        success: 'Test updated successfully'
+      destroy:
+        success: 'Test deleted successfully'

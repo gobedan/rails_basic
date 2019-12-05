@@ -30,4 +30,21 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  helpers:
+  submit:
+    test:
+      create: 'Create test'
+      update: 'Update test'
+
+  admin:
+    tests: 
+      level: 'level'
+      questions: 'questions'
+      index:
+        header: 'Available tests'
+
+  tests: 
+    level: 'level'
+    questions: 'questions'
+    index:
+      header: 'Available tests'

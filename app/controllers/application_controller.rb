@@ -1,11 +1,14 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  helper_method :flash_alert_unauthorized, 
-                :flash_alert_wrong_credentials,
-                :flash_message_greetings
+  helper_method :flash_message_greetings
 
   before_action :authenticate_user!
+  before_action :set_locale 
+
+  def default_url_options
+    { lang: I18n.locale != I18n.default_locale ? I18n.locale : nil }
+  end
 
   protected 
 
@@ -14,14 +17,6 @@ class ApplicationController < ActionController::Base
   end
 
   private
-
-  def flash_alert_unauthorized
-    flash[:alert] = 'You are not Guru yet! Please login!'
-  end
-
-  def flash_alert_wrong_credentials
-    flash.now[:alert] = 'Are you a Guru? Wrong credentials!'
-  end
 
   def flash_message_greetings
     flash[:notice] = "Hello, #{current_user.first_name}" if current_user.has_name? 
@@ -33,5 +28,9 @@ class ApplicationController < ActionController::Base
     else
       super
     end
+  end
+
+  def set_locale
+    I18n.locale = I18n.locale_available?(params[:lang]) ? params[:lang] : I18n.default_locale
   end
 end

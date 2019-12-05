@@ -1,0 +1,17 @@
+ru:
+  activerecord:
+    models:
+      test: "Тест"
+
+    attributes:
+      test:
+        title: "Название"
+        level: "Уровень"
+        category_id: "Категория"
+
+    errors:
+      messages:
+        blank: "не может быть пустым"
+        taken: "уже существует"
+        inclusion: "за пределом допустимых значений"
+        not_a_number: "не является целым числом"

@@ -1,0 +1,9 @@
+ru:
+  admin:
+    tests:
+      create:
+        success: 'Тест успешно создан'
+      update:
+        success: 'Тест успешно обновлен'
+      destroy:
+        success: 'Тест успешно удален'

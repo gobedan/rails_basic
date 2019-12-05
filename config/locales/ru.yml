@@ -1,0 +1,21 @@
+ru:
+  helpers:
+    submit:
+      test:
+        create: 'Создать тест'
+        update: 'Обновить тест'
+
+  admin:
+    tests: 
+      level: 'уровень'
+      questions: 'вопросов'
+      index:
+        header: 'Доступные тесты'
+
+  tests: 
+    level: 'уровень'
+    questions: 'вопросов'
+    index:
+      header: 'Доступные тесты'
+      level: 'уровень'
+      questions: 'вопросов'
