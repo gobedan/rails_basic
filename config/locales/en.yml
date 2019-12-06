@@ -48,3 +48,4 @@ en:
     questions: 'questions'
     index:
       header: 'Available tests'
+      start: 'Start'

@@ -1,2 +1,2 @@
-<p><%= test.title %>, <%= I18n.t('tests.level') %>: <%= test.level %>, <%= I18n.t('tests.questions') %>: <%= test.questions.size %> </p>
-<%= button_to 'Start', start_test_path(test) %>
+<p><%= test.title %>, <%= t('tests.level') %>: <%= test.level %>, <%= t('tests.questions') %>: <%= test.questions.size %> </p>
+<%= button_to t('tests.index.start'), start_test_path(test) %>

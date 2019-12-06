@@ -2,6 +2,21 @@
 
 en:
   devise:
+    links:
+      login: "Log in"
+      register: "Sign up"
+      password_recovery: "Forgot your password?"
+      confirmation: "Didn't receive confirmation instructions?"
+      unlock: "Didn't receive unlock instructions?"
+      omni_auth: "Sign in with"
+    log_in:
+      title: "Enter the Guru gates"
+      submit: "Enter"
+      remember_checkbox: "Remember me"
+    sign_up:
+      title: "Become a Guru"
+      password_tips: "characters minimum"
+      submit: "Sign up"
     confirmations:
       confirmed: "Your email address has been successfully confirmed."
       send_instructions: "You will receive an email with instructions for how to confirm your email address in a few minutes."

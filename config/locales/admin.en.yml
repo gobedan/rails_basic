@@ -2,8 +2,14 @@ en:
   admin:
     tests:
       create:
+        link: 'Create test'
         success: 'Test created successfully'
       update:
+        link: 'Edit'
         success: 'Test updated successfully'
       destroy:
+        link: 'DELETE'
         success: 'Test deleted successfully'
+        confirm: 'Are you sure?'
+      open:
+        link: 'Open'

@@ -2,8 +2,14 @@ ru:
   admin:
     tests:
       create:
+        link: 'Создать новый тест'
         success: 'Тест успешно создан'
       update:
+        link: 'Редактировать'
         success: 'Тест успешно обновлен'
       destroy:
+        link: 'УДАЛИТЬ'
         success: 'Тест успешно удален'
+        confirm: 'Вы уверены?'
+      open:
+        link: 'Открыть'
