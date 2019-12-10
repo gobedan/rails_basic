@@ -22,3 +22,6 @@ ru:
       level: 'уровень'
       questions: 'вопросов'
       start: 'Начать'
+  nav:
+    welcome: 'Добро пожаловать, '
+    logout: 'Выйти'

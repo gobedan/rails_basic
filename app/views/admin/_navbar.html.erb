@@ -1,9 +1,13 @@
-<nav>
-  <%= link_to 'TestGuru', root_path, class: 'nav-title nav-admin' %>
-  <div class="nav nav-admin">
+<nav class="navbar navbar-light bg-light">
+  <%= link_to 'TestGuru', root_path, class: 'navbar-brand nav-title nav-admin' %>
+  <div class="nav-right-container nav-admin">
     <% if user_signed_in? %>
-      <p class="user nav-admin">Welcome, <b><%= current_user.email %></b> Guru</p>
-      <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+      <span class="nav-text"><%= t('nav.welcome') %><b><%= current_user.email %></b>  |  </span>
+      <%= link_to t('nav.logout'), destroy_user_session_path, method: :delete %>
+    <% else %>
+      <%= link_to t('devise.links.login'), new_session_path(resource_name) %>
+      <span>  |  </span>
+      <%= link_to t('devise.links.register'), new_registration_path(resource_name) %>
     <% end %> 
   </div>
 </nav>

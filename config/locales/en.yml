@@ -49,3 +49,6 @@ en:
     index:
       header: 'Available tests'
       start: 'Start'
+  nav:
+    welcome: 'Welcome, '
+    logout: 'Logout'

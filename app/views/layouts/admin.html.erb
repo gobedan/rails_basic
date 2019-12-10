@@ -6,7 +6,6 @@
     <title>TestGuru</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -14,8 +13,8 @@
   <body>
     <%= render 'admin/navbar' %>
     <%= flash_messages %>
-    <div id=main-body>
-    <%= yield %>
+    <div id=main-body class='container'>
+      <%= yield %>
     </div>
     <footer>
       <p>Valentin Markin, <%= get_year %> </p>

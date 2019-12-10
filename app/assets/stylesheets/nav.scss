@@ -1,8 +1,11 @@
-.nav {
+/*
+.nav-right-container {
   display: flex;
   justify-content: flex-end;
+  align-items: flex-end;
 }
-.nav a {
+
+.nav-right-container a {
   margin: auto 10px;
 }
 
@@ -15,6 +18,10 @@
   display: none; 
 }
 
-.user.nav-admin {
+.nav-right-container.nav-admin {
   color: magenta;
+}
+*/
+.admin-icon {
+  text-align: left;
 }
