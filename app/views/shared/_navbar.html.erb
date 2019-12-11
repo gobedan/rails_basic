@@ -1,7 +1,7 @@
 <nav class="navbar navbar-light bg-light">
   <div class="">
     <%= link_to 'TestGuru', root_path, class: 'navbar-brand nav-title' %>
-    <% if current_user.admin? %>
+    <% if current_user&.admin? %>
       <a href=<%= admin_tests_url %> class="admin-icon" >
         <object pointer-event=none> 
           <%= octicon 'tools' %>
