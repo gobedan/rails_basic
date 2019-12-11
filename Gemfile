@@ -30,7 +30,7 @@ gem 'devise', '~> 4.0'
 # Localization
 gem 'rails-i18n', '~> 6.0.0'
 # UI
-gem 'bootstrap', '~> 4.0.0'
+gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
 gem 'octicons'
 gem 'octicons_helper'
