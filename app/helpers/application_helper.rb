@@ -12,7 +12,7 @@ module ApplicationHelper
       flash.each do |key, message| 
         # насколько приемлимы условные интерполяции? 
         concat(content_tag :p, message, 
-                               class: "flash-#{key} alert #{flash_message_bootstrap_class(key)}"
+                               class: "flash flash-#{key} alert #{flash_message_bootstrap_class(key)}"
         )
       end
     end
@@ -21,10 +21,6 @@ module ApplicationHelper
   private 
 
   def flash_message_bootstrap_class(key)
-    if key == "alert"
-      "alert-danger"
-    else
-      "alert-success"
-    end
+    {alert: 'alert-danger', notice: 'alert-success'}[key.to_sym]
   end
 end
