@@ -6,14 +6,12 @@ ru:
       test:
         create: 'Создать тест'
         update: 'Обновить тест'
-
   admin:
     tests: 
       level: 'уровень'
       questions: 'вопросов'
       index:
         header: 'Доступные тесты'
-
   tests: 
     level: 'уровень'
     questions: 'вопросов'
@@ -25,3 +23,10 @@ ru:
   nav:
     welcome: 'Добро пожаловать, '
     logout: 'Выйти'
+  test_passages:
+    gist:
+      success: "Gist успешно сохранен!"
+      failure: "Во время сохранения gist произошла ошибка"
+      link: "Посмотреть gist."
+  services:
+    description: "Вопрос из теста %{title} с сайта TestGuru"
