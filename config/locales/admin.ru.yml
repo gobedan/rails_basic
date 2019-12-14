@@ -1,6 +1,10 @@
 ru:
   admin:
     tests:
+      level: 'уровень'
+      questions: 'вопросов'
+      index:
+        header: 'Доступные тесты'
       create:
         link: 'Создать новый тест'
         success: 'Тест успешно создан'
@@ -13,3 +17,7 @@ ru:
         confirm: 'Вы уверены?'
       open:
         link: 'Открыть'
+    gists:
+      index:
+        header: 'Созданные пользователями Gists'
+        link: 'Посмотреть gists'

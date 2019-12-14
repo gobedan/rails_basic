@@ -1,17 +1,11 @@
 ru:
   helpers:
     select:
-      prompt: "Выберите"
+      prompt: 'Выберите'
     submit:
       test:
         create: 'Создать тест'
-        update: 'Обновить тест'
-  admin:
-    tests: 
-      level: 'уровень'
-      questions: 'вопросов'
-      index:
-        header: 'Доступные тесты'
+        update: 'Обновить тест'      
   tests: 
     level: 'уровень'
     questions: 'вопросов'
@@ -25,8 +19,8 @@ ru:
     logout: 'Выйти'
   test_passages:
     gist:
-      success: "Gist успешно сохранен!"
-      failure: "Во время сохранения gist произошла ошибка"
-      link: "Посмотреть gist."
+      success: 'Gist успешно сохранен!'
+      failure: 'Во время сохранения gist произошла ошибка'
+      link: 'Посмотреть gist.'
   services:
-    description: "Вопрос из теста %{title} с сайта TestGuru"
+    description: 'Вопрос из теста %{title} с сайта TestGuru'

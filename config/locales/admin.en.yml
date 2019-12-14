@@ -1,6 +1,10 @@
 en:
   admin:
     tests:
+      level: 'level'
+      questions: 'questions'
+      index:
+        header: 'Available tests'
       create:
         link: 'Create test'
         success: 'Test created successfully'
@@ -13,3 +17,7 @@ en:
         confirm: 'Are you sure?'
       open:
         link: 'Open'
+    gists:
+      index:
+        header: 'Created Gists'
+        link: 'Browse gists'

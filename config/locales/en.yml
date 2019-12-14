@@ -35,12 +35,6 @@ en:
     test:
       create: 'Create test'
       update: 'Update test'
-  admin:
-    tests: 
-      level: 'level'
-      questions: 'questions'
-      index:
-        header: 'Available tests'
   tests: 
     level: 'level'
     questions: 'questions'
@@ -52,8 +46,8 @@ en:
     logout: 'Logout'
   test_passages:
     gist:
-      success: "Gist was successfully saved!"
-      failure: "Gist save error!"
-      link: "Your gist here!"
+      success: 'Gist was successfully saved!'
+      failure: 'Gist save error!'
+      link: 'Your gist here!'
   services:
-    description: "A question about %{title} from TestGuru"
+    description: 'A question about %{title} from TestGuru'

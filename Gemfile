@@ -27,6 +27,7 @@ gem 'jbuilder', '~> 2.7'
 
 # AUTH
 gem 'devise', '~> 4.0'
+gem 'dotenv-rails', groups: [:development, :test]
 # Localization
 gem 'rails-i18n', '~> 6.0.0'
 # UI
