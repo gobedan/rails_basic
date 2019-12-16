@@ -11,7 +11,7 @@ module ApplicationHelper
     content_tag :div, class: "flash-messages" do 
       flash.each do |key, message| 
         # насколько приемлимы условные интерполяции? 
-        concat(content_tag :p, message, 
+        concat(content_tag :p, message.html_safe, 
                                class: "flash flash-#{key} alert #{flash_message_bootstrap_class(key)}"
         )
       end

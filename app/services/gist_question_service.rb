@@ -1,15 +1,28 @@
 class GistQuestionService
-  def initialize(question, client: nil)
+  def initialize(question, client = default_client)
     @question = question
     @test = @question.test
-    @client = client || GitHubClient.new
+    @client = client
+    @response_status = 0
   end
 
   def call 
-    @client.create_gist(gist_params)
+    byebug
+    result = @client.create_gist(gist_params)
+    @response_status = result.status
+  end
+
+  def success?
+    @response_status == CREATED_STATUS
   end
 
   private
+
+  CREATED_STATUS = 201 
+
+  def default_client
+    GitHubClient.new
+  end
 
   def gist_params
     {

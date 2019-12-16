@@ -8,6 +8,6 @@
     </tr>
   </thead>
   <tbody>
-    <%= render Gist.list_all %>
+    <%= render Gist.order(created_at: :desc) %>
   </tbody>
 </table>

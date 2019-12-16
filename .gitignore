@@ -36,3 +36,5 @@ yarn-debug.log*
 
 # gobedan: ignore crashed libs fix 
 /vendor/cache/
+# gobedan: ignore .env with token 
+*.env

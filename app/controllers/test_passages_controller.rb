@@ -15,13 +15,11 @@ class TestPassagesController < ApplicationController
   end 
   
   def gist
-    result = call_gist_service
+    service = gist_service
+    service.call
     gist_url = result.html_url
-    # result.class = Sawyer::Resource - json созданного ресурса
-    #  нашел как грамотно проверить result на успех. Вместо result работать с рейлс-объектом response ? 
-    if response.successful?  
-      # ссылка все равно отображается текстом, хотя flash.notice.class = ActiveSupport.SafeBuffer
-      save_gist(gist_url)
+    if service.success?
+      Gist.create(url: gist_url, user: current_user, question: @test_passage.current_question)
       flash[:notice] = t('.success').concat(%Q[<a href="#{@gist.url}"> #{t('.link')}</a>]).html_safe
     else 
       flash[:alert] = t('.failure') 
@@ -31,20 +29,12 @@ class TestPassagesController < ApplicationController
 
   private
 
-  def save_gist(url)
-    @gist = Gist.new
-    @gist.url = url
-    @gist.user = current_user
-    @gist.question = @test_passage.current_question
-    @gist.save 
-  end
-
   def set_test_passage
     @test_passage = TestPassage.find(params[:id])
   end
 
-  def call_gist_service
+  def gist_service
     octokit_client = Octokit::Client.new(access_token: ENV['GITHUB_TOKEN'])
-    GistQuestionService.new(@test_passage.current_question, client: octokit_client).call
+    GistQuestionService.new(@test_passage.current_question, octokit_client)
   end
 end
