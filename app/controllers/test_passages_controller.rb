@@ -16,10 +16,12 @@ class TestPassagesController < ApplicationController
   
   def gist
     service = gist_service
-    service.call
-    gist_url = result.html_url
+    result = service.call
     if service.success?
-      Gist.create(url: gist_url, user: current_user, question: @test_passage.current_question)
+      Gist.create(url: result.html_url, hash: result.id, 
+                                        user: current_user, 
+                                    question: @test_passage.current_question
+                  )
       flash[:notice] = t('.success').concat(%Q[<a href="#{@gist.url}"> #{t('.link')}</a>]).html_safe
     else 
       flash[:alert] = t('.failure') 
