@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 2019_12_16_165356) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "question_id"
     t.integer "user_id"
-    t.string "hash"
+    t.string "hash_code"
     t.index ["question_id"], name: "index_gists_on_question_id"
     t.index ["user_id"], name: "index_gists_on_user_id"
   end

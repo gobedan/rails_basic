@@ -8,7 +8,8 @@ class GistQuestionService
 
   def call 
     result = @client.create_gist(gist_params)
-    @response_status = result.status
+    @response_status = @client.last_response.status
+    return result 
   end
 
   def success?

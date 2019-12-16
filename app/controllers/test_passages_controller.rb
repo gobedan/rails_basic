@@ -17,12 +17,13 @@ class TestPassagesController < ApplicationController
   def gist
     service = gist_service
     result = service.call
+    byebug
     if service.success?
-      Gist.create(url: result.html_url, hash: result.id, 
-                                        user: current_user, 
-                                    question: @test_passage.current_question
-                  )
-      flash[:notice] = t('.success').concat(%Q[<a href="#{@gist.url}"> #{t('.link')}</a>]).html_safe
+      @gist = Gist.create(url: result.html_url, hash_code: result.id, 
+                                                     user: current_user, 
+                                                 question: @test_passage.current_question
+                         ) 
+      flash[:notice] = t('.success').concat(%Q[<a href="#{@gist.url}"> #{t('.link')}</a>])
     else 
       flash[:alert] = t('.failure') 
     end
