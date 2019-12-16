@@ -7,7 +7,6 @@ class GistQuestionService
   end
 
   def call 
-    byebug
     result = @client.create_gist(gist_params)
     @response_status = result.status
   end
