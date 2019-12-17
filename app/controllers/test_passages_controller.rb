@@ -15,9 +15,9 @@ class TestPassagesController < ApplicationController
   end 
   
   def gist
+    # строка нужна, тк в условии нам нужно обратиться к тому же экземпляру сервиса для получена статуса последнего запроса
     service = gist_service
     result = service.call
-    byebug
     if service.success?
       @gist = Gist.create(url: result.html_url, hash_code: result.id, 
                                                      user: current_user, 

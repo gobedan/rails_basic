@@ -1,4 +1,6 @@
 class GistQuestionService
+  CREATED_STATUS = 201 
+
   def initialize(question, client = default_client)
     @question = question
     @test = @question.test
@@ -9,16 +11,14 @@ class GistQuestionService
   def call 
     result = @client.create_gist(gist_params)
     @response_status = @client.last_response.status
-    return result 
+    result 
   end
 
   def success?
-    @response_status == CREATED_STATUS
+    @response_status == CREATED_STATUS && @client.last_response.headers[:location].present?
   end
 
   private
-
-  CREATED_STATUS = 201 
 
   def default_client
     GitHubClient.new
