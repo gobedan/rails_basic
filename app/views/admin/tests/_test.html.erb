@@ -1,4 +1,6 @@
-<p><%= test.title %>, <%= t('admin.tests.level') %>: <%= test.level %>, <%= t('admin.tests.questions') %>: <%= test.questions.size %> </p>
-<%= link_to t('admin.tests.open.link'), admin_test_path(test) %>
-<%= link_to t('admin.tests.update.link'), edit_admin_test_path(test) %>
-<%= link_to t('admin.tests.destroy.link'), admin_test_path(test), method: :delete, data: { confirm: t('admin.tests.destroy.confirm') } %>
+<div class="admin-test-container test-container">
+  <p><%= test.title %>, <%= t('admin.tests.level') %>: <%= test.level %>, <%= t('admin.tests.questions') %>: <%= test.questions.size %> </p>
+  <%= link_to t('admin.tests.open.link'), admin_test_path(test) %>
+  <%= link_to t('admin.tests.update.link'), edit_admin_test_path(test) %>
+  <%= link_to t('admin.tests.destroy.link'), admin_test_path(test), method: :delete, data: { confirm: t('admin.tests.destroy.confirm') } %>
+</div>

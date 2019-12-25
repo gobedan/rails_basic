@@ -1,2 +1,4 @@
-<p><%= test.title %>, <%= t('tests.level') %>: <%= test.level %>, <%= t('tests.questions') %>: <%= test.questions.size %> </p>
+<div class="test-container"> 
+  <p><%= test.title %>, <%= t('tests.level') %>: <%= test.level %>, <%= t('tests.questions') %>: <%= test.questions.size %> </p>
 <%= button_to t('tests.index.start'), start_test_path(test) %>
+</div>

@@ -1,4 +1,9 @@
-<h2><%= t('.header') %> </h2>
+<h2 class="sort-by-title pointer"><%= t('.header') %>
+  <%= octicon 'arrow-up', class: 'hide' %>
+  <%= octicon 'arrow-down', class: 'hide' %>
+</h2>
 <%= link_to t('admin.tests.create.link'), new_admin_test_path %></br>
 <%= link_to t('admin.gists.index.link'), admin_gists_path %> 
-<%= render @tests %>
+<div class="tests-block admin-tests-block">
+  <%= render @tests %>
+</div>

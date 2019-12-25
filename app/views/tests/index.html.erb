@@ -1,2 +1,7 @@
-<h2><%= t('.header') %></h2>
-<%= render @tests %>
+<h2 class="sort-by-title pointer"><%= t('.header') %>
+  <%= octicon 'arrow-up', class: 'hide' %>
+  <%= octicon 'arrow-down', class: 'hide' %>
+</h2>
+<div class="tests-block">
+  <%= render @tests %>
+</div>
