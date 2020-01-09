@@ -10,6 +10,10 @@ document.addEventListener('turbolinks:load', function(){
       this.parentNode.querySelector('.octicon-issue-closed').classList.add('hide');
       this.parentNode.querySelector('.octicon-issue-opened').classList.remove('hide');
     }
+    if (!confirmation.value) {
+      this.parentNode.querySelector('.octicon-issue-opened').classList.add('hide');
+      this.parentNode.querySelector('.octicon-issue-closed').classList.add('hide');
+    }
   }
 
   function comparePasswordFields() {
