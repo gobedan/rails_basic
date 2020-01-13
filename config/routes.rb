@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   namespace :admin do 
     resources :gists, only: :index
     resources :tests do
+      patch :update_inline, on: :member
       resources :questions, except: :index, shallow: true do
         resources :answers, except: :index, shallow: true
       end

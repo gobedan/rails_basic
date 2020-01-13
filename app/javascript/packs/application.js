@@ -4,6 +4,7 @@
 // that code so it'll be compiled.
 
 //= require jquery3
+//= require jquery_ujs
 //= require popper
 //= require bootstrap-sprockets
 require("@rails/ujs").start()
@@ -12,6 +13,8 @@ require("@rails/activestorage").start()
 require("channels")
 require("packs/utilities/sorting")
 require("packs/utilities/confirmation_check")
+require("packs/utilities/form_inline")
+
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)

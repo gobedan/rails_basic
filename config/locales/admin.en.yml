@@ -17,6 +17,8 @@ en:
         confirm: 'Are you sure?'
       open:
         link: 'Open'
+      form_inline:
+        submit: 'Submit'
     gists:
       index:
         header: 'Created Gists'

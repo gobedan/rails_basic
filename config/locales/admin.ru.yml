@@ -17,6 +17,8 @@ ru:
         confirm: 'Вы уверены?'
       open:
         link: 'Открыть'
+      form_inline:
+        submit: 'Сохранить'
     gists:
       index:
         header: 'Созданные пользователями Gists'
