@@ -70,7 +70,8 @@ Rails.application.configure do
     password:             ENV['SMTP_PASSWORD'],
     authentication:       :plain,
     enable_starttls_auto: true,
-    tls:                  true 
+    tls:                  true,
+    ssl:                  true   
   }
 
   # Ignore bad email addresses and do not raise email delivery errors.
