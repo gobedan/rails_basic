@@ -73,6 +73,10 @@ Rails.application.configure do
     tls:                  true,
     ssl:                  true   
   }
+  config.action_mailer.default_options = { 
+    from:     "puzo_undead@mail.ru", 
+    reply_to: "puzo_undead@mail.ru"
+  }
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
