@@ -38,3 +38,5 @@ yarn-debug.log*
 /vendor/cache/
 # gobedan: ignore .env with token 
 *.env
+# local secure env 
+/config/local_env.yml
