@@ -1,9 +1,7 @@
 <%= form_with(model: feedback) do |form| %>
-  <div class="email-field">
+  <div class="field">
     <%= form.label :email%>
     <%= form.text_field :email%>
-  </div>
-  <div class="body-field mb-3 col-12">
     <%= form.label :body %> </br>
     <%= form.text_area :body, class: 'form-control z-depth-1', cols: 60, rows: 10 %>
   </div>
