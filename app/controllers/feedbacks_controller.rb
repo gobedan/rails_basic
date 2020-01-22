@@ -1,4 +1,6 @@
 class FeedbacksController < ApplicationController
+  skip_before_action :authenticate_user!
+  before_action :disable_layout
   # GET /feedbacks/new
   def new
     @feedback = Feedback.new
@@ -6,18 +8,19 @@ class FeedbacksController < ApplicationController
 
   # POST /feedbacks
   def create
-    @feedback = Feedback.new(feedback_params)
-    @feedback.user = current_user 
-    if @feedback.save
-      redirect_to root_path
-      AdminMailer.with(user: current_user, text: @feedback.body).feedback.deliver_now
-    else
-      render :new 
+    @feedback = Feedback.new(feedback_params) 
+    if @feedback.valid? 
+      AdminMailer.with(email: @feedback.email, text: @feedback.body).feedback.deliver_now
     end
+    respond_with @feedback, location: new_feedbacks_path
   end
 
   private
     def feedback_params
-      params.require(:feedback).permit(:body)
+      params.require(:feedback).permit(:body, :email)
+    end
+
+    def disable_layout
+      render layout: false
     end
 end
