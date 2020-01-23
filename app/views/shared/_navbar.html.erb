@@ -2,21 +2,21 @@
   <div class="">
     <%= link_to 'TestGuru', root_path, class: 'navbar-brand nav-title' %>
     <% if current_user&.admin? %>
-      <a href=<%= admin_tests_url %> class="admin-icon" >
+      <a href=<%= admin_tests_url %> class="admin-icon">
         <object pointer-event=none> 
           <%= octicon 'tools' %>
         </object>
       </a>
     <% end %>
-  </div>
-  <div class="nav-right-container">
-    <% if user_signed_in? %>
-      <span class="nav-text"><%= t('nav.welcome') %><b><%= current_user.email %></b>  |  </span>
-      <%= link_to t('nav.logout'), destroy_user_session_path, method: :delete %>
-    <% else %>
-      <%= link_to t('devise.links.login'), new_session_path(resource_name) %>
-      <span>  |  </span>
-      <%= link_to t('devise.links.register'), new_registration_path(resource_name) %>
-    <% end %> 
-  </div>
+  </div> 
+    <div class="nav-right-container">
+      <% if user_signed_in? %>
+        <span class="nav-text"><%= t('nav.welcome') %><b><%= current_user.email %></b>  |  </span>
+        <%= link_to t('nav.logout'), destroy_user_session_path, method: :delete %>
+      <% elsif defined?(resource_name) %>
+        <%= link_to t('devise.links.login'), new_session_path(resource_name) %>
+        <span>  |  </span>
+        <%= link_to t('devise.links.register'), new_registration_path(resource_name) %>
+      <% end %> 
+    </div>
 </nav>
