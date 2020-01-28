@@ -1,7 +1,5 @@
-  <h2><%= question_header(@question) %></h2>
-  <h4>Associated test: <%= @question.test.title %>, level: <%= @question.test.level %> </h4>
-  <%= form_with model: [:admin, @test, @question] do |form| %>
-    <%= form.label :body %>
-    <%= form.text_field :body %> 
+  <%= form_with model: [:admin, @test, @question], local: true do |form| %>
+    <%= form.label :body %> </br>
+    <%= form.text_field :body %> </br>
     <%= form.submit %>
   <% end %>

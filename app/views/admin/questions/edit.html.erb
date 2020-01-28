@@ -1,1 +1,4 @@
+<h2><%= question_header(@question) %></h2>
+<h4>Associated test: <%= @question.test.title %>, level: <%= @question.test.level %> </h4>
+<%= render 'shared/errors', resource: @question %>
 <%= render 'form' %>

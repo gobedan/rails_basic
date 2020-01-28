@@ -1,10 +1,9 @@
-  <h2><%= @test.title %></h2>
-  <%= form_with model: [:admin, @test] do |form| %>
-    <%= form.label :title %>
-    <%= form.text_field :title %> 
-    <%= form.label :level %>
-    <%= form.text_field :level %> 
-    <%= form.label :category_id %>
-    <%= form.collection_select :category_id, Category.all, :id, :title, prompt: true %> 
+  <%= form_with model: [:admin, @test], local: true do |form| %>
+    <%= form.label :title %> </br>
+    <%= form.text_field :title %> </br>
+    <%= form.label :level %> </br>
+    <%= form.text_field :level %> </br>
+    <%= form.label :category_id %> </br>
+    <%= form.collection_select :category_id, Category.all, :id, :title, prompt: true %> </br> 
     <%= form.submit %>
   <% end %>

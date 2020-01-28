@@ -3,5 +3,5 @@ class Feedback
   EMAIL_REGEX = /\A.+@.+$\z/
   attr_accessor :body, :email
   validates :email, format: { with: EMAIL_REGEX, message: "incorrect format"}
-  validates :body, presence: true, on: :create
+  validates :body, presence: true
 end

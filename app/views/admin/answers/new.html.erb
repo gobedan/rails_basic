@@ -3,6 +3,7 @@
   <%= @question.body %>
 </p>
 
+<%= render 'shared/errors', resource: @answer %>
 <%= render 'form', answer: @answer %>
 
 <%= link_to 'Back', admin_question_path(@question) %>
