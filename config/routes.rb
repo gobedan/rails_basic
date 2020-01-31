@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  
   root to: 'tests#index'
 
   devise_for :users, path: :gurus, path_names: { sign_in: :login, sign_out: :logout },
@@ -24,7 +23,10 @@ Rails.application.routes.draw do
         resources :answers, except: :index, shallow: true
       end
     end
+    resources :badges, only: %i[index, new, create, destroy]
   end
+
+  resources :badges, only: :index
   
   resource :feedbacks, only: %i[new create]
 end

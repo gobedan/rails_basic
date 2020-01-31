@@ -17,6 +17,7 @@ module TestGuru
           ENV[key.to_s] = value
         end
       end 
+      ENV['IMG_BADGES_PATH'] = "#{Rails.root}/app/assets/images/badges"
     end
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @badge.name %>
+</p>
+
+<p>
+  <strong>Icon file:</strong>
+  <%= @badge.icon_file %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @badge.category_id %>
+</p>
+
+<p>
+  <strong>Level:</strong>
+  <%= @badge.level %>
+</p>
+
+<p>
+  <strong>Test:</strong>
+  <%= @badge.test_id %>
+</p>
+
+<%= link_to 'Edit', edit_badge_path(@badge) %> |
+<%= link_to 'Back', badges_path %>
