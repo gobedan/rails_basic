@@ -2,34 +2,6 @@
 
 <h1>Badges</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Icon file</th>
-      <th>Category</th>
-      <th>Level</th>
-      <th>Test</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @badges.each do |badge| %>
-      <tr>
-        <td><%= badge.name %></td>
-        <td><%= badge.icon_file %></td>
-        <td><%= badge.category_id %></td>
-        <td><%= badge.level %></td>
-        <td><%= badge.test_id %></td>
-        <td><%= link_to 'Show', badge %></td>
-        <td><%= link_to 'Edit', edit_badge_path(badge) %></td>
-        <td><%= link_to 'Destroy', badge, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Badge', new_badge_path %>
+<div class="badges-block col-8">
+  <%= render @badges %>
+</div>

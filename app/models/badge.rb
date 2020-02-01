@@ -11,7 +11,7 @@ class Badge < ApplicationRecord
   private
 
   def icon_file_existance
-    unless (File.exist?(ENV['IMG_PATH'] + '/' + icon_file))
+    unless (File.exist?(ENV['IMG_BADGES_PATH'] + '/' + icon_file))
       errors.add(:icon_file, message: 'File not found')
     end
   end 

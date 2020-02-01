@@ -3,7 +3,7 @@ class BadgesController < ApplicationController
 
   # GET /badges
   def index
-    #TODO earned + existing
+    @badges = Badge.all
   end
 
 end

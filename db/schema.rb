@@ -87,8 +87,10 @@ ActiveRecord::Schema.define(version: 2020_01_31_094117) do
 
   create_table "user_badges", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "badges_id", null: false
-    t.index ["badges_id"], name: "index_user_badges_on_badges_id"
+    t.bigint "badge_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["badge_id"], name: "index_user_badges_on_badge_id"
     t.index ["user_id"], name: "index_user_badges_on_user_id"
   end
 
@@ -130,6 +132,6 @@ ActiveRecord::Schema.define(version: 2020_01_31_094117) do
   add_foreign_key "test_passages", "users"
   add_foreign_key "tests", "categories"
   add_foreign_key "tests", "users", column: "author_id"
-  add_foreign_key "user_badges", "badges", column: "badges_id"
+  add_foreign_key "user_badges", "badges"
   add_foreign_key "user_badges", "users"
 end
