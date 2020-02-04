@@ -3,7 +3,9 @@ class TestPassagesController < ApplicationController
 
   def show; end
 
-  def result; end
+  def result
+    flash[:notice] = "New achievement unlocked!" if current_user.check_for_achievements
+  end
   
   def update
     @test_passage.accept!(params[:answer_ids])
