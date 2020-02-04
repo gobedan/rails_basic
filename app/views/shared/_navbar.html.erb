@@ -11,7 +11,8 @@
   </div> 
     <div class="nav-right-container">
       <% if user_signed_in? %>
-        <span class="nav-text"><%= t('nav.welcome') %><b><%= current_user.email %></b>  |  </span>
+        <span class="nav-text"><%= t('nav.welcome') %><b><%= current_user.email %></b>  |  </span>     
+        <%= link_to t('nav.badges'), badges_path %> |
         <%= link_to t('nav.logout'), destroy_user_session_path, method: :delete %>
       <% elsif defined?(resource_name) %>
         <%= link_to t('devise.links.login'), new_session_path(resource_name) %>

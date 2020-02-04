@@ -1,0 +1,13 @@
+<% earned_badge = current_user.user_badges.find_by(badge_id: badge.id) %>
+<% if earned_badge %>
+  <div class="badge-item-container pl-4 pr-4 shadow unlocked-badge">
+    <%= image_tag("badges/" + badge.icon_file, class: "img-fluid p-4 w-25 d-inline-block") %>
+    <span> <%= badge.name %> </span> </br> 
+    <span class="earned-info"> Earned at: <%= earned_badge.created_at %> </span>
+<% else %>
+  <div class="badge-item-container pl-4 pr-4 shadow locked-badge">
+    <%= image_tag("badges/" + badge.icon_file, class: "img-fluid p-4 w-25 d-inline-block") %>
+    <span> <%= badge.name %> </span></br>
+<% end %>
+    <%= link_to 'Delete', admin_badge_path(badge), method: :delete %>
+  </div>

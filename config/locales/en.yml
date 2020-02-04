@@ -44,6 +44,7 @@ en:
   nav:
     welcome: 'Welcome, '
     logout: 'Logout'
+    badges: 'Badges'
   test_passages:
     gist:
       success: 'Gist was successfully saved!'

@@ -1,0 +1,8 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Badges</h1> 
+<span> | <%= link_to 'Create', new_admin_badge_path %> </span>
+
+<div class="badges-block col-8">
+  <%= render @badges %>
+</div>

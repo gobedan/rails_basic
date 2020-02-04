@@ -17,6 +17,7 @@ ru:
   nav:
     welcome: 'Добро пожаловать, '
     logout: 'Выйти'
+    badges: 'Достижения'
   test_passages:
     gist:
       success: 'Gist успешно сохранен!'
