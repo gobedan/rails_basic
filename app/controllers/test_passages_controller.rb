@@ -4,7 +4,10 @@ class TestPassagesController < ApplicationController
   def show; end
 
   def result
-    flash[:notice] = "New achievement unlocked!" if current_user.check_for_achievements
+    new_badges = BadgeService.new(@test_passage).assign_new_badges
+    current_user.badges << new_badges
+    flash[:notice] = "New achievement unlocked!" if new_badges.present? 
+    
   end
   
   def update

@@ -9,7 +9,6 @@ class Badge < ApplicationRecord
   validate :icon_file_existance 
   validate :rule_assignance
 
-
   private
 
   def icon_file_existance

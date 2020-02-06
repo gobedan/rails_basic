@@ -12,6 +12,7 @@
   <h4>Правила выдачи</h4>
   <div class="field">
     <%# Путаница с kebab-case и snake-case для классов и айди %>
+    <%# суффикс кнопки и лейбла должны строго совпадать с параметрами %>
     <%= form.radio_button :rule, 'level', class: "new_badge_radio" %>
     <%= form.label :rule_level, 'Вручать за прохождение всех тестов уровня' %> 
     <%= form.collection_select :level, Test.pluck(:level).uniq!, :to_int, :to_int, prompt: true, class: 'new-badge-selector' %> </br>
