@@ -1,34 +1,41 @@
 class BadgeService 
+  RULES = %i[test level category]
+
   def initialize(test_passage)
+    @test_passage = test_passage
     @user = test_passage.user
     @test = test_passage.test
-    @completed_tests_ids = @user.test_passages.completed.pluck(:test_id).uniq
+    @completed_test_ids = @user.test_passages.completed.pluck(:test_id)
+    @successful_test_passages = @user.test_passages.select { |passage| passage.successful? }
+    @successful_test_ids = @successful_test_passages.map { |passage| passage.test.id }
   end
 
   # returns new badges that @user is capable for after completing @test (ex. test_passage#result)
   def assign_new_badges
-    new_badges = [] 
-    Badge.all.to_ary.map do |badge| 
-      unless @user.badges.include?(badge)
-        new_badges << badge if self.send(badge.rule.to_sym, badge)
-      end
+    Badge.all.to_ary.select do |badge| 
+      !@user.badges.include?(badge) && self.send(badge.rule.to_sym, badge)
     end
-    return new_badges
   end
 
   private
 
   def level(badge)
-    tests_by_level_ids = Test.by_level(badge.level).ids
-    (tests_by_level_ids - @completed_tests_ids).empty?
+    if @test.level == badge.value && @test_passage.successful?
+      tests_by_level_ids = Test.by_level(badge.value).ids
+      (tests_by_level_ids - @successful_test_ids).empty?
+    end
   end
 
-  def category_id(badge)
-    tests_by_category_ids = Test.from_category(badge.category.title).ids
-    (tests_by_category_ids - @completed_tests_ids).empty?
+  def category(badge)
+    if @test.category.id == badge.value && @test_passage.successful?
+      tests_by_category_ids = Test.from_category(Category.find(badge.value).title).ids
+      (tests_by_category_ids - @successful_test_ids).empty?
+    end
   end
 
-  def test_id(badge) 
-    @completed_tests_ids.one? { |id| id == badge.test.id }
+  def test(badge) 
+    @test.id == badge.value && 
+    @test_passage.successful? &&
+    @completed_test_ids.one? { |id| id == badge.value }
   end
 end

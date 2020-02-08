@@ -1,14 +1,14 @@
 class Badge < ApplicationRecord 
-  belongs_to :category, optional: true
-  belongs_to :test, optional: true 
   has_many :user_badges, dependent: :destroy
   has_many :users, through: :user_badges
 
   validates :icon_file, presence: true
   validates :name, presence: true 
+  validates :rule, presence: true
+  validates :value, presence: true
   validate :icon_file_existance 
-  validate :rule_assignance
-
+  validate :rule_availability
+  
   private
 
   def icon_file_existance
@@ -17,13 +17,10 @@ class Badge < ApplicationRecord
     end
   end 
 
-  def rule_assignance 
-    if (level.blank? && category_id.blank? && test_id.blank?)
-      errors.add(:base, 'No rules assigned!')
-    elsif ((level.present? && category_id.present?) || 
-           (level.present? && test_id.present?) ||
-           (category_id.present? && test_id.present?))
-      errors.add(:base, 'More than one rule assigned!')
+  def rule_availability
+    unless BadgeService::RULES.include?(rule.to_sym)
+      errors.add(:rule, 'not available!')
     end
   end
+   
 end

@@ -5,7 +5,7 @@ class TestPassage < ApplicationRecord
 
   before_validation :before_validation_set_current_question
 
-  scope :completed,  ->  do 
+  scope :completed,  -> do 
     where(current_question: nil)
   end
 
