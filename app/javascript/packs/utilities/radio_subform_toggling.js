@@ -1,6 +1,6 @@
 document.addEventListener('turbolinks:load', function(){
   $('.new_badge_radio').change(radioButtonHandler);
-  if ($('new_badge_radio')){
+  if ($('.new_badge_radio').length > 0){
     $('select').prop("disabled", true);
   }
 

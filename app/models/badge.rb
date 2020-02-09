@@ -3,9 +3,9 @@ class Badge < ApplicationRecord
   has_many :users, through: :user_badges
 
   validates :icon_file, presence: true
-  validates :name, presence: true 
-  validates :rule, presence: true
-  validates :value, presence: true
+  validates :name, :rule, :value, presence: true 
+  validates :value, inclusion: { in: 0..Float::INFINITY }, 
+                    numericality: { only_integer: true }
   validate :icon_file_existance 
   validate :rule_availability
   

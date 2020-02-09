@@ -11,20 +11,12 @@
 
   <h4>Правила выдачи</h4>
   <div class="field">
-    <%# Путаница с kebab-case и snake-case для классов и айди %>
-    <%# суффикс кнопки и лейбла должны строго совпадать с параметрами %>
-    <%= form.radio_button :rule, 'level', class: "new_badge_radio" %>
-    <%= form.label :rule_level, 'Вручать за прохождение всех тестов уровня' %> 
-    <%= form.collection_select :level, Test.pluck(:level).uniq!, :to_int, :to_int, prompt: true %></br>
-    <%= form.radio_button :rule, 'category', class: "new_badge_radio" %>     
-    <%= form.label :rule_category, 'Вручать за прохождение всех тестов в категории' %> 
-    <%= form.collection_select :category, Category.all, :id, :title, prompt: true %> 
-    </br>
-    <%= form.radio_button :rule, 'test', class: "new_badge_radio" %>
-    <%= form.label :rule_test, 'Вручать за прохождение теста с первой попытки' %> 
-    <%= form.collection_select :test, Test.all, :id, :title, prompt: true %> 
-    </br>
-    
+    <%# не понял как для селектора вызвать хелпер ведь text_method вызывается для каждого элемента коллекции, а в нашем случае элемент это просто символ %>
+    <%= form.collection_select :rule, 
+                               BadgeService::RULES, 
+                               :to_sym, 
+                               Proc.new { |rule| t("admin.badges.rules.#{rule}") }%> 
+    <%= form.text_field :value, size: 20 %> 
   <div class="actions">
     <%= form.submit %>
   </div>

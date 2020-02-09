@@ -23,3 +23,8 @@ en:
       index:
         header: 'Created Gists'
         link: 'Browse gists'
+    badges:
+      rules:
+        level: 'Pass all level tests'
+        category: 'Pass all tests from category'
+        test: 'Pass specific test in one try'

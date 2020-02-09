@@ -13,7 +13,6 @@ class Admin::BadgesController < Admin::BaseController
   # POST /admin/badges
   def create
     @badge = Badge.new(badge_params)
-    @badge.value = params[:badge][@badge.rule.to_sym]
     if @badge.save
       redirect_to badges_url, notice: 'Badge was successfully created.' 
     else
@@ -37,6 +36,6 @@ class Admin::BadgesController < Admin::BaseController
     end
 
     def badge_params
-      params.require(:badge).permit(:name, :icon_file, :rule)
+      params.require(:badge).permit(:name, :icon_file, :rule, :value)
     end
 end
