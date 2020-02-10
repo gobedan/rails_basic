@@ -7,7 +7,7 @@ class Badge < ApplicationRecord
   validates :value, inclusion: { in: 0..Float::INFINITY }, 
                     numericality: { only_integer: true }
   validate :icon_file_existance 
-  validate :rule_availability
+  validates :rule, inclusion: { in: BadgeService::RULES.map(&:to_s) }
   
   private
 
@@ -16,11 +16,5 @@ class Badge < ApplicationRecord
       errors.add(:icon_file, message: 'File not found')
     end
   end 
-
-  def rule_availability
-    unless BadgeService::RULES.include?(rule.to_sym)
-      errors.add(:rule, 'not available!')
-    end
-  end
    
 end

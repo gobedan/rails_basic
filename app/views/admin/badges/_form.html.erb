@@ -12,10 +12,7 @@
   <h4>Правила выдачи</h4>
   <div class="field">
     <%# не понял как для селектора вызвать хелпер ведь text_method вызывается для каждого элемента коллекции, а в нашем случае элемент это просто символ %>
-    <%= form.collection_select :rule, 
-                               BadgeService::RULES, 
-                               :to_sym, 
-                               Proc.new { |rule| t("admin.badges.rules.#{rule}") }%> 
+    <%= form.select :rule, mapped_rules, prompt: true %> 
     <%= form.text_field :value, size: 20 %> 
   <div class="actions">
     <%= form.submit %>

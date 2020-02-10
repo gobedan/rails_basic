@@ -4,7 +4,6 @@ class TestPassage < ApplicationRecord
   belongs_to :current_question, class_name: 'Question', optional: true
 
   before_validation :before_validation_set_current_question
-  after_validation :after_validation_set_success
 
   scope :completed,  -> do 
     where(current_question: nil)
@@ -20,8 +19,7 @@ class TestPassage < ApplicationRecord
 
   def accept!(answer_ids)
     self.correct_questions += 1 if correct_answer?(answer_ids) 
-    # вставить добавление флага сюда не вышло - переключение на след. вопрос происходит ниже по коду 
-    #self.success = successful? if completed? 
+    self.success = successful? 
     save!
   end
 
@@ -44,10 +42,6 @@ class TestPassage < ApplicationRecord
   private
 
   SUCCESS_RATIO = 0.85
-
-  def after_validation_set_success
-    self.success = successful? if completed? 
-  end
 
   def before_validation_set_current_question
     self.current_question = next_question if test.present? 

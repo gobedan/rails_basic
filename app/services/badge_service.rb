@@ -20,15 +20,21 @@ class BadgeService
 
   def level(badge)
     return unless @test.level == badge.value && @test_passage.successful?
+    same_badges_count = @user.user_badges.where(badge_id: badge.id).count
     tests_by_level_ids = Test.by_level(@test.level).ids
-    (tests_by_level_ids - @successful_test_ids).empty?
+    tests_by_level_ids.all? do |required_test_id| 
+      @successful_test_ids.count(required_test_id) >= same_badges_count
+    end
   end
 
   def category(badge)
     category = @test.category
     return unless category.id == badge.value && @test_passage.successful?
-    tests_by_category_ids = Test.from_category(Category.find(category.id).title).ids
-    (tests_by_category_ids - @successful_test_ids).empty?
+    same_badges_count = @user.user_badges.where(badge_id: badge.id).count
+    tests_by_category_ids = Test.from_category(category.title).ids 
+    tests_by_category_ids.all? do |required_test_id| 
+      @successful_test_ids.count(required_test_id) >= same_badges_count 
+    end
   end
 
   def test(badge) 
