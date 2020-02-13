@@ -41,6 +41,9 @@ en:
     index:
       header: 'Available tests'
       start: 'Start'
+    time:
+        label: 'Time'
+        measure: 'min'
   nav:
     welcome: 'Welcome, '
     logout: 'Logout'

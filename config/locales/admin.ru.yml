@@ -19,6 +19,9 @@ ru:
         link: 'Открыть'
       form_inline:
         submit: 'Сохранить'
+      time:
+        label: 'Время'
+        measure: 'мин'
     gists:
       index:
         header: 'Созданные пользователями Gists'

@@ -5,7 +5,10 @@
   </p>
   <p>
     <%= t('admin.tests.level') %>: <%= test.level %>, 
-    <%= t('admin.tests.questions') %>: <%= test.questions.size %> 
+    <%= t('admin.tests.questions') %>: <%= test.questions.size %>
+    <% if test.time %>
+      , <%= t('admin.tests.time.label') %>: <%= test.time %><%= t('admin.tests.time.measure') %>
+    <% end %>
   </p>
   <%= link_to t('admin.tests.open.link'), admin_test_path(test) %>
   <%= link_to t('admin.tests.update.link'), 

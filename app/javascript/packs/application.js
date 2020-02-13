@@ -16,6 +16,7 @@ require("packs/utilities/confirmation_check")
 require("packs/utilities/form_inline")
 require("packs/utilities/progress_bar")
 require("packs/utilities/radio_subform_toggling")
+require("packs/utilities/test_passage_timer")
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)

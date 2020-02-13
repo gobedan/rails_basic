@@ -3,6 +3,8 @@
     <%= form.text_field :title %> </br>
     <%= form.label :level %> </br>
     <%= form.text_field :level %> </br>
+    <%= form.label :time %> (in minutes)</br>
+    <%= form.text_field :time %> </br>
     <%= form.label :category_id %> </br>
     <%= form.collection_select :category_id, Category.all, :id, :title, prompt: true %> </br> 
     <%= form.submit %>

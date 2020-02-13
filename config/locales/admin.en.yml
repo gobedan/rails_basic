@@ -19,6 +19,9 @@ en:
         link: 'Open'
       form_inline:
         submit: 'Submit'
+      time:
+        label: 'Time'
+        measure: 'min'
     gists:
       index:
         header: 'Created Gists'

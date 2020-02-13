@@ -1,4 +1,10 @@
 <div class="test-container"> 
-  <p><%= test.title %>, <%= t('tests.level') %>: <%= test.level %>, <%= t('tests.questions') %>: <%= test.questions.size %> </p>
+  <p><%= test.title %>, 
+    <%= t('tests.level') %>: <%= test.level %>, 
+    <%= t('tests.questions') %>: <%= test.questions.size %> 
+    <% if test.time %>
+      , <%= t('tests.time.label') %>: <%= test.time %><%= t('tests.time.measure') %>
+    <% end %>
+  </p>
 <%= button_to t('tests.index.start'), start_test_path(test) %>
 </div>

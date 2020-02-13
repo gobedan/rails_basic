@@ -16,7 +16,7 @@ class Test < ApplicationRecord
   end    
 
   validates :title, presence: true 
-  validates :level, inclusion: { in: 0..Float::INFINITY }, 
-                    numericality: { only_integer: true }
+  validates :level, :time, inclusion: { in: 0..Float::INFINITY }, 
+                           numericality: { only_integer: true }
   validates_uniqueness_of :title, scope: :level 
 end
