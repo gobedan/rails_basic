@@ -20,21 +20,17 @@ class BadgeService
 
   def level(badge)
     return unless @test.level == badge.value && @test_passage.successful?
-    same_badges_count = @user.user_badges.where(badge_id: badge.id).count
     tests_by_level_ids = Test.by_level(@test.level).ids
-    tests_by_level_ids.all? do |required_test_id| 
-      @successful_test_ids.count(required_test_id) >= same_badges_count
-    end
+    actual_test_ids = actualize_test_ids(badge)    
+    (tests_by_level_ids - actual_test_ids).empty? 
   end
 
   def category(badge)
     category = @test.category
     return unless category.id == badge.value && @test_passage.successful?
-    same_badges_count = @user.user_badges.where(badge_id: badge.id).count
     tests_by_category_ids = Test.from_category(category.title).ids 
-    tests_by_category_ids.all? do |required_test_id| 
-      @successful_test_ids.count(required_test_id) >= same_badges_count 
-    end
+    actual_test_ids = actualize_test_ids(badge) 
+    (tests_by_category_ids - actual_test_ids).empty?
   end
 
   def test(badge) 
@@ -42,4 +38,17 @@ class BadgeService
     @test_passage.successful? &&
     @completed_test_ids.one? { |id| id == badge.value }
   end
+
+#формируем список ИД успешно пройденых тестов, включаем только пройденные после выдачи аналогичного бейджа
+  def actualize_test_ids(badge)
+    if UserBadge.where(user_id: @user.id, badge_id: badge.id).count > 0 
+      actual_successful_test_ids = TestPassage.where('updated_at > ?', UserBadge.order('created_at DESC')
+                                                                                .find_by(badge_id: badge.id)
+                                                                                .created_at)
+                                       .pluck(:test_id)
+    else 
+      actual_successful_test_ids = @successful_test_ids
+    end
+    actual_successful_test_ids
+  end 
 end
