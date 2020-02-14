@@ -18,12 +18,16 @@ class TestPassage < ApplicationRecord
   end 
 
   def completed? 
-    current_question.nil? 
+    current_question.nil?
   end
 
   def accept!(answer_ids)
     self.correct_questions += 1 if correct_answer?(answer_ids) 
     self.success = successful? 
+    # отсутствие текущего вопроса - основной критерий завершенности прохождения
+    # self.current_question = nil if timed_out?
+    # это не очень наглядно, потому завершение вынес в метод
+    finish if timed_out? 
     save!
   end
 
@@ -66,6 +70,10 @@ class TestPassage < ApplicationRecord
       prev_id = current_question.id
     end
     test.questions.order(:id).where('id > ?', prev_id).first
+  end
+
+  def finish
+    self.current_question = nil 
   end
 
 end
