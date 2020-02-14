@@ -13,6 +13,10 @@ class TestPassage < ApplicationRecord
     where(success: true)
   end
 
+  def timed_out? 
+    Time.now > @test_passage.created_at.advance(minutes: test.time) 
+  end 
+
   def completed? 
     current_question.nil? 
   end
