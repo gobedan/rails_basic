@@ -14,20 +14,16 @@ class TestPassage < ApplicationRecord
   end
 
   def timed_out? 
-    Time.now > @test_passage.created_at.advance(minutes: test.time) 
+    Time.now > created_at.advance(minutes: test.time) 
   end 
 
   def completed? 
-    current_question.nil?
+    current_question.nil? 
   end
 
   def accept!(answer_ids)
     self.correct_questions += 1 if correct_answer?(answer_ids) 
     self.success = successful? 
-    # отсутствие текущего вопроса - основной критерий завершенности прохождения
-    # self.current_question = nil if timed_out?
-    # это не очень наглядно, потому завершение вынес в метод
-    finish if timed_out? 
     save!
   end
 
@@ -52,7 +48,14 @@ class TestPassage < ApplicationRecord
   SUCCESS_RATIO = 0.85
 
   def before_validation_set_current_question
-    self.current_question = next_question if test.present? 
+    # Основной критерий завершенности тест - отсутствие текущего вопроса
+    # По-этому добавил проверку на таймаут сюда а не в акцепт
+    # иначе пришлось бы переписывать next_question добавляя туда неочевидные сложные проверки
+    if persisted? && test&.time.present? && timed_out?
+      self.current_question = nil 
+    elsif test.present?
+      self.current_question = next_question
+    end
   end
 
   def correct_answer?(answer_ids)
@@ -70,10 +73,6 @@ class TestPassage < ApplicationRecord
       prev_id = current_question.id
     end
     test.questions.order(:id).where('id > ?', prev_id).first
-  end
-
-  def finish
-    self.current_question = nil 
   end
 
 end
