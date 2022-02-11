@@ -143,7 +143,8 @@ GEM
     pg (1.2.2)
     popper_js (1.14.5)
     public_suffix (4.0.1)
-    puma (3.12.4)
+    puma (4.3.11)
+      nio4r (~> 2.0)
     rack (2.0.8)
     rack-proxy (0.6.5)
       rack
@@ -273,7 +274,7 @@ DEPENDENCIES
   octicons_helper
   octokit (~> 4.0)
   pg
-  puma (~> 3.12)
+  puma (~> 4.3)
   rails (~> 6.0.0)
   rails-i18n (~> 6.0.0)
   sass-rails (~> 5)
